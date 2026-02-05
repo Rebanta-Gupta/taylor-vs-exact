@@ -16,7 +16,7 @@ function taylorVsExact()
 %       Two figures are generated:
 %       1. 'TaylorVsExact' - Plots Taylor approximation (red dashed) vs exact
 %                            function (black solid) over the interval [0, 6]
-%       2. 'Error'         - Plots the percentage error between approximation
+%       2. 'Error Analysis'         - Plots the percentage error between approximation
 %                            and exact values
 %
 %   Examples:
@@ -51,7 +51,7 @@ x0 = input("Please enter Approximate Point, x0: ");
 
 x = sym("x");
 
-x_plot = linspace(0, 6, 50);
+x_plot = linspace(x0 - 5, x0 + 5, 50);
 
 taylor_pts = sym(zeros(1, (n+1)));
 
@@ -83,12 +83,12 @@ hold on
 title(func+" from taylor series expression compared to exact centered around "+num2str(x0))
 xlabel('x')
 ylabel(func)
-plot(x_plot, y_estimate_vals, 'r--','Displayname','Taylor');
 plot(x_plot, y_exact, 'k-','Displayname','Exact');
+plot(x_plot, y_estimate_vals, 'r--','Displayname','Taylor');
 grid on
 legend show
 
-figure("Name", "Error Analysis", "NumberTitle","off")
+figure("Name", "Error Anaylsis", "NumberTitle","off")
 hold on 
 title("Error "+func+" from taylor series expression centered around "+num2str(x0))
 xlabel('x')
