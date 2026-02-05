@@ -68,6 +68,12 @@ error_tre = error_mae ./ y_exact;
 abs_error = abs(error_tre);
 error_tay = abs_error * 100;
 
+for a = 1:50
+    if error_tay(a) < 1e-6
+        error_tay(a) = 0;
+    end
+end
+
 figure("Name", "TaylorVsExact", "NumberTitle","off")
 hold on 
 title(func+" from taylor series expression compared to exact centered around "+num2str(x0))
@@ -106,3 +112,4 @@ hold off
     end
 
 end
+
